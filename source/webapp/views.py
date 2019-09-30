@@ -81,10 +81,8 @@ class CommentIndexView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['comment'] = Comment.objects.all()
+        context['comment'] = Comment.objects.all().order_by('-created_at')
         return context
-
-
 
 
 class CommentCreateView(View):

@@ -6,9 +6,8 @@
 {% block content %}
 <h1>Comments:</h1>
     {% for com in comment %}
-        <h2>{{ com.author }}</h2>
-        <div>{{ com.text }}</div>
-{#        <p><a href="{% url 'article_view' article.pk %}">More...</a></p>#}
+        {% include 'partial/comment_form.html' %}
+        <p><a href="{% url 'article_view' com.article.pk  %}">View Article</a></p>
         <p><a href="{% url 'comment_update' com.pk %}">Edit</a></p>
         <p><a href="{% url 'comment_delete' com.pk %}">Delete</a></p>
         <hr/>

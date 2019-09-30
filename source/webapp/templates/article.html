@@ -8,4 +8,20 @@
     <h1>{{ article.title }}</h1>
     <p>Created by <b>{{ article.author }}</b> at <b>{{ article.created_at }}</b></p>
     <div class="pre">{{ article.text }}</div>
+    <h2 class="text-center">Create Comment</h2>
+    <form method="POST" action="{% url 'article_view' article.pk %}">
+        {% csrf_token %}
+        <div><label for="name">Name</label>
+        <input type="text" name="name" id="name"></div>
+        <div><label for="comment">Comments</label>
+        <textarea name="comment" id="comment"></textarea></div>
+        <button type="submit">Comment</button>
+    </form>
+
+    <h2 class="text-center">Comments</h2>
+    {% for com in article.comments.all %}
+        {% include 'partial/comment_form.html' %}
+        <hr/>
+    {% endfor %}
+
 {% endblock %}
