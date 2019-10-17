@@ -8,6 +8,7 @@
     <h1>{{ article.title }}</h1>
     <p>Created by <b>{{ article.author }}</b> at <b>{{ article.created_at }}</b></p>
     <div class="pre">{{ article.text }}</div>
+    <div>{{ article.tags }}</div>
     <h2 class="text-center">Create Comment</h2>
     <form method="POST" action="{% url 'article_view' article.pk %}">
         {% csrf_token %}
