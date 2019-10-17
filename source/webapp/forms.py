@@ -4,11 +4,17 @@ from django.forms import widgets
 from webapp.models import Article
 
 
-class ArticleForm(forms.Form):
-    title = forms.CharField(max_length=200, required=True, label='Title')
-    author = forms.CharField(max_length=40, required=True, label='Author')
-    text = forms.CharField(max_length=3000, required=True, label='Text',
-                           widget=widgets.Textarea)
+# class ArticleForm(forms.Form):
+#     title = forms.CharField(max_length=200, required=True, label='Title')
+#     author = forms.CharField(max_length=40, required=True, label='Author')
+#     text = forms.CharField(max_length=3000, required=True, label='Text',
+#                            widget=widgets.Textarea)
+
+
+class ArticleForm(forms.ModelForm):
+    class Meta:
+        model = Article
+        fields = ['title', 'author', 'text']
 
 
 class CommentForm(forms.Form):
